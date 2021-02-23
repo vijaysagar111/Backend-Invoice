@@ -20,6 +20,7 @@ connectDB();
 
 // body parser
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
 // Load routes
 const authRouter = require('./routes/auth.route')
 const userRouter = require('./routes/user.route')

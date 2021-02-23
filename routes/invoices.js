@@ -51,22 +51,22 @@ router.route("/:id").delete((req, res) => {
 
 router.route("/update/:id").post((req, res) => {
   Invoice.findById(req.params.id)
-    .them((invoice) => {
-      invoice.username = req.body.username;
-      invoice.invoiceNumber = req.body.invoiceNumber;
-      invoice.paymentDate = req.body.paymentDate;
-      invoice.customerName = req.body.customerName;
-      invoice.amount = req.body.amount;
-      invoice.totalPaid = req.body.totalPaid;
-      invoice.datePaid = req.body.datePaid;
+  .then((invoice) => {
+    invoice.username = req.body.username;
+    invoice.invoiceNumber = req.body.invoiceNumber;
+    invoice.paymentDate = req.body.paymentDate;
+    invoice.customerName = req.body.customerName;
+    invoice.amount = req.body.amount;
+    invoice.totalPaid = req.body.totalPaid;
+    invoice.datePaid = req.body.datePaid;
+    invoice
+      .save()
+      .then(() => res.json("Invoice updated!"))
+      .catch((err) => res.status(400).json("Error: " + err));
+  }).catch(err => res.send(err));
+  });
 
-      invoice
-        .save()
-        .then(() => res.json("Invoice updated!"))
-        .catch((err) => res.status(400).json("Error: " + err));
-    })
-    .catch((err) => res.status(400).json("Error: " + err));
-});
+
 
 
 router.post('/generate',(req, res) => {

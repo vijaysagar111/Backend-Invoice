@@ -148,7 +148,7 @@ exports.signinController = (req, res) => {
         },
         process.env.JWT_SECRET,
         {
-          expiresIn: '7d'
+          expiresIn: '5m'
         }
       );
       const { _id, name, email, role } = user;

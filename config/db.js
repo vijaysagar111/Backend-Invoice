@@ -7,9 +7,8 @@ const connectDB = async () => {
         useCreateIndex:true,
         useFindAndModify:true,
         useUnifiedTopology:true
-    })
+    }).then((resp) => console.log('Connected to Db')).catch(err => console.log(err))
 }
 
-console.log('MongoDb Connected')
 
 module.exports = connectDB

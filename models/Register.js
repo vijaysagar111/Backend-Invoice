@@ -8,7 +8,7 @@ const clientSchema = new Schema({
     password: String
 })
 
-const Users = mongoose.model('user', clientSchema)
+const Users = mongoose.model('registeredUser', clientSchema)
 
 
 module.exports = Users
